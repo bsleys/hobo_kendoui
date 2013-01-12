@@ -1,0 +1,16 @@
+<def tag="input" for="Currency">
+	<%= text_field_tag(name, this, deunderscore_attributes(attributes)) %>
+  	$(document).ready(function(){$(".#{name}").kendoNumericTextBox({format: "c", decimals: 2});
+</def>
+
+<def tag="input" for="KendoString">
+	<kendu-string/>
+</def>
+
+<def tag="kendo-string">
+	<%= text_area_tag(name, this, deunderscore_attributes(attributes)) %>
+	$(document).ready(function(){
+		$(".#{name}").kendoEditor({encoded: false});
+		$(".k-editor").width("");
+   	});
+</def>
