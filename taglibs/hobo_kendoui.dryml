@@ -1,16 +1,35 @@
 <def tag="input" for="Currency">
-	<%= text_field_tag(name, this, deunderscore_attributes(attributes)) %>
-  	$(document).ready(function(){$(".#{name}").kendoNumericTextBox({format: "c", decimals: 2});
+	<currency format="c" decimals="&2" merge/>
 </def>
 
-<def tag="input" for="KendoString">
-	<kendu-string/>
+<def tag="currency" attrs="name"><%
+  options, attrs = attributes.partition_hash(['culture', 'decimals', 'downArrowText', 'format', 'max', 'min', 'placeholder', 'spinners', 'step', 'upArrowText', 'value'])
+  #options["spinners"]=false if options["spinners"] && options["spinners"].casecmp("false") == 0
+  #options["decimals"]=options["decimals"].to_i if options["decimals"]
+  #options["max"]=options["max"].to_f if options["max"]
+  #options["min"]=options["min"].to_f if options["min"]
+  #options["step"]=options["step"].to_f if options["step"]
+
+  events, html_attrs = attrs.partition_hash(['change', 'spin'])
+  add_data_rapid!(html_attrs, "kendoNumericTextBox", :options => options, :events => events)
+  name ||= param_name_for_this %>
+	<%= text_field_tag(name, this, deunderscore_attributes(html_attrs)) %>
 </def>
 
-<def tag="kendo-string">
-	<%= text_area_tag(name, this, deunderscore_attributes(attributes)) %>
-	$(document).ready(function(){
-		$(".#{name}").kendoEditor({encoded: false});
-		$(".k-editor").width("");
-   	});
+<def tag="view" for="Currency">
+	<%=number_to_currency(this)%>
 </def>
+
+<def tag="input" for="html" attrs="name">
+  <kendoEditor encoded="&false" width="" merge />
+</def>
+
+<def tag="kendoEditor" attrs="name"><%
+  options, attrs = attributes.partition_hash(['encoded', 'messages', 'stylesheets', 'tools', 'imageBrowser', 'width'])
+  events, html_attrs = attrs.partition_hash(['onChange', 'execute', 'keydown', 'keyup', 'paste', 'select'])
+  #options["encoded"]=false if options["encoded"] && options["encoded"].casecmp("false") == 0
+  add_data_rapid!(html_attrs, "kendoEditor", :options => options, :events => events)
+  name ||= param_name_for_this %>
+	<%= text_area_tag(name, this, deunderscore_attributes(html_attrs)) %>
+</def>
+
