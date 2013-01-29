@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = HoboKendoui::VERSION
   s.authors     = ["Bob Sleys"]
   s.email       = ["bsleys@gmail.com"]
-  s.homepage    = "TODO"
+  s.homepage    = "https://github.com/bsleys/hobo_kendoui"
   s.summary     = "Hobofication of jQuery Kendoui."
   s.description = "Hobofication of [Kendo UI](http://www.kendoui.com/)"
 
