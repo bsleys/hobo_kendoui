@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Bob Sleys"]
   s.email       = ["bsleys@gmail.com"]
   s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of HoboKendoui."
-  s.description = "TODO: Description of HoboKendoui."
+  s.summary     = "Hobofication of jQuery Kendoui."
+  s.description = "Hobofication of [Kendo UI](http://www.kendoui.com/)"
 
 
   s.add_dependency "kendoui-rails"
